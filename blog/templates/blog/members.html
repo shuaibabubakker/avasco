@@ -1,0 +1,502 @@
+{% extends "blog/base.html" %} {% load static %} {%block content%}
+<div class="row justify-content-center" style="padding: 0px 0px 40px 0px;">
+  <div class="col-md-11 justify-content-center">
+    <div class="page-title  justify-content-center">Committee</div>
+
+    <div class="row  justify-content-center">
+      <img
+        src="{{ committee.india_poster.url }}"
+        alt="no image"
+        style="max-width: 500px; width: 100vw; height: 90vh; padding:10px;"
+      /><img
+        src="{{ committee.gcc_poster.url }}"
+        alt="no image"
+        style="max-width: 500px; width: 100vw; height: 90vh; padding: 10px;"
+      />
+    </div>
+    <div
+      class="question-committee"
+      style="color: #002266; font-size: xx-large;"
+    >
+      India
+    </div>
+      <div class="card-columns">
+        {% if committee.president %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">president</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.president.image.url }}"
+                alt="no image"
+              />
+              <a href="{% url 'member-detail' committee.president.id %}">
+                <h4 class="media-heading">{{ committee.president.name }}</h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.secretary %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">secretary</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.secretary.image.url }}"
+                alt="no image"
+              />
+              <a href="{% url 'member-detail' committee.secretary.id %}">
+                <h4 class="media-heading">{{ committee.secretary.name }}</h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.treasurer %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">treasurer</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.treasurer.image.url }}"
+                alt="no image"
+              />
+              <a href="{% url 'member-detail' committee.treasurer.id %}">
+                <h4 class="media-heading">{{ committee.treasurer.name }}</h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.vice_president_1 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">vice president</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.vice_president_1.image.url }}"
+                alt="no image"
+              />
+              <a href="{% url 'member-detail' committee.vice_president_1.id %}">
+                <h4 class="media-heading">
+                  {{ committee.vice_president_1.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.vice_president_2 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">vice president</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.vice_president_2.image.url }}"
+                alt="no image"
+              />
+              <a href="{% url 'member-detail' committee.vice_president_2.id %}">
+                <h4 class="media-heading">
+                  {{ committee.vice_president_2.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.joint_secretary_1 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">joint secretary</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.joint_secretary_1.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.joint_secretary_1.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.joint_secretary_1.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.joint_secretary_2 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">joint secretary</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.joint_secretary_2.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.joint_secretary_2.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.joint_secretary_2.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.executive_member_1 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">executive member</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.executive_member_1.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.executive_member_1.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.executive_member_1.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.executive_member_2 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">executive member</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.executive_member_2.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.executive_member_2.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.executive_member_2.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %}{% if committee.executive_member_3 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">executive member</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.executive_member_3.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.executive_member_3.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.executive_member_3.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %}{% if committee.executive_member_4 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">executive member</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.executive_member_4.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.executive_member_4.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.executive_member_4.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <br />
+      <br />
+
+      <div
+        class="question-committee"
+        style="color: #002266; font-size: xx-large;"
+      >
+        GCC
+      </div>
+      <div class="card-columns">
+        {% if committee.gcc_president %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">president</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_president.image.url }}"
+                alt="no image"
+              />
+              <a href="{% url 'member-detail' committee.gcc_president.id %}">
+                <h4 class="media-heading">
+                  {{ committee.gcc_president.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.gcc_secretary %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">secretary</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_secretary.image.url }}"
+                alt="no image"
+              />
+              <a href="{% url 'member-detail' committee.gcc_secretary.id %}">
+                <h4 class="media-heading">
+                  {{ committee.gcc_secretary.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.gcc_treasurer %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">treasurer</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_treasurer.image.url }}"
+                alt="no image"
+              />
+              <a href="{% url 'member-detail' committee.gcc_treasurer.id %}">
+                <h4 class="media-heading">
+                  {{ committee.gcc_treasurer.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.gcc_vice_president_1 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">vice president</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_vice_president_1.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.gcc_vice_president_1.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.gcc_vice_president_1.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.gcc_vice_president_2 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">vice president</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_vice_president_2.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.gcc_vice_president_2.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.gcc_vice_president_2.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.gcc_joint_secretary_1 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">joint secretary</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_joint_secretary_1.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.gcc_joint_secretary_1.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.gcc_joint_secretary_1.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.gcc_joint_secretary_2 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">joint secretary</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_joint_secretary_2.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.gcc_joint_secretary_2.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.gcc_joint_secretary_2.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.gcc_executive_member_1 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">executive member</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_executive_member_1.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.gcc_executive_member_1.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.gcc_executive_member_1.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %} {% if committee.gcc_executive_member_2 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">executive member</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_executive_member_2.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.gcc_executive_member_2.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.gcc_executive_member_2.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %}{% if committee.gcc_executive_member_3 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">executive member</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_executive_member_3.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.gcc_executive_member_3.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.gcc_executive_member_3.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %}{% if committee.gcc_executive_member_4 %}
+        <div class="card" style="box-shadow: none;">
+          <div class="question-committee">executive member</div>
+          <div>
+            <li class="media">
+              <img
+                class="media-object"
+                src="{{ committee.gcc_executive_member_4.image.url }}"
+                alt="no image"
+              />
+              <a
+                href="{% url 'member-detail' committee.gcc_executive_member_4.id %}"
+              >
+                <h4 class="media-heading">
+                  {{ committee.gcc_executive_member_4.name }}
+                </h4>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        {% endif %}
+      </div>
+
+      <br />
+      <br />
+      <div class="page-title">Members</div>
+
+      <div class="card-columns">
+        {% for member in members %}
+        <div>
+          <li class="media">
+            <img
+              class="media-object"
+              src="{{ member.image.url }}"
+              alt="no image"
+            />
+            <a href="{% url 'member-detail' member.id %}">
+              <h4 class="media-heading">{{ member.name}}</h4>
+            </a>
+          </li>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endblock content%}
+</div>

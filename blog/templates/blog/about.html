@@ -1,0 +1,57 @@
+{% extends "blog/base.html" %} {% load static %} {%block content%}
+
+<div class="row justify-content-center">
+  <div class="col-md-8 d-flex justify-content-center">
+    <img
+      style="height: 300px; width: 300px; padding: auto;"
+      src="{% static 'text_logo.png'%}"
+      alt="avasco"
+    />
+  </div>
+  <div class="col-md-8">
+    <legend class="page-title">About Us</legend>
+  </div>
+</div>
+<!-- About -->
+<div>
+  <div class="row justify-content-md-center" style="padding: 10px;">
+    <div class="col-md-8">
+      <p class="mission-content">
+        Welcome to Avasco, the Arts and Sports Cultural Organisation at Aviyoor!
+        Avasco offer a broad spectrum of activities for individuals and various
+        interest groups on our area. Avasco is recognized and registered under
+        Nehru Yuva Kendra youth clubs, which focus on the organising competitive
+        and social programs.<br><br>
+
+        Welcome to Avasco, the Arts and Sports Cultural Organisation at Aviyoor!
+        Avasco offer a broad spectrum of activities for individuals and various
+        interest groups on our area. Avasco is recognized and registered under
+        Nehru Yuva Kendra youth clubs, which focus on the organising competitive
+        and social programs.<br><br>
+
+        Welcome to Avasco, the Arts and Sports Cultural Organisation at Aviyoor!
+        Avasco offer a broad spectrum of activities for individuals and various
+        interest groups on our area. Avasco is recognized and registered under
+        Nehru Yuva Kendra youth clubs, which focus on the organising competitive
+        and social programs.
+      </p>
+      <div style="text-align: right;">
+        <a class="editbtn" href="{% url 'timeline' %}">VIEW TIMELINE</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-md-center" style="padding: 50px 10px;">
+  <div class="col-md-5">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe
+        class="embed-responsive-item"
+        src="https://www.youtube.com/embed/SNLOH0bgGjs?rel=0"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+{% endblock content%}

@@ -1,0 +1,70 @@
+{% extends "blog/base.html" %} {% load static %} {%block content%}
+
+<legend class="page-title">Gallery</legend>
+
+<div class="row card-group justify-content-center col-md-12">
+  {% for homepic in homepics %} 
+  <figure class="col-md-4  justify-content-center">
+    <img
+      class="card-img"
+      src="{{ homepic.image.url }}"
+      alt="Card image cap"
+    />
+    </figure>
+{% endfor %}
+{% for timeline in timelines %} 
+<figure class="col-md-4  justify-content-center">
+  <img
+    class="card-img"
+    src="{{ timeline.image.url }}"
+    alt="Card image cap"
+  />
+  </figure>
+{% endfor %}
+  {% for post in posts %}
+    {% if post.image_1 %}
+    <figure class="col-md-4  justify-content-center">
+    <img
+      class="card-img"
+      src="{{ post.image_1.url }}"
+      alt="{{post.title}}"
+    />
+    </figure>
+    {% endif %}
+    {% if post.image_2 %}
+    <figure class="col-md-4  justify-content-center">
+    <img
+      class="card-img"
+      src="{{ post.image_2.url }}"
+      alt="{{post.title}}"
+    />
+    </figure>
+    {% endif %}
+    {% if post.image_3 %}
+    <figure class="col-md-4  justify-content-center">
+    <img
+      class="card-img"
+      src="{{ post.image_3.url }}"
+      alt="{{post.title}}"
+    />
+    </figure>
+    {% endif %}
+  {% endfor %}
+    <figure class="col-md-4  justify-content-center">
+      <a
+        href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(117).jpg"
+        data-size="1600x1067"
+      >
+        <img
+          alt="picture"
+          src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg"
+          class="img-fluid"
+        />
+      </a>
+    </figure>
+
+  </div>
+</div>
+
+
+{% endblock content%}

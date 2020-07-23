@@ -1,0 +1,39 @@
+{% extends "blog/base.html" %} {% load static %} {%block content%}
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h1 class="page-title" style="text-transform: uppercase; padding: 30px 10px;">{{object.name}}</h1>
+    <img class="post-detail-img" src="{{ member.image.url }}" alt="no image" />
+    <div class="post-detail-body">
+      {% if object.get_section_display %}
+      <p class="post-detail-date">{{ object.get_section_display }}</p>
+      {% endif %}
+      {% if object.get_sex_display %}
+        <div class="question">GENDER</div> <div class="answer">{{ object.get_sex_display }}</div>
+      {% endif %}
+      {% if object.email %}
+      <div class="question">EMAIL</div> <div class="answer" style="text-transform: none !important;">{{ object.email }}</div>
+      {% endif %}
+      {% if object.phone_1_india %}
+      <div class="question">PHONE NO (IND)</div> <div class="answer"> {{ object.phone_1_india }}</div>
+      {% endif %}
+      {% if object.phone_2_gcc %}
+      <div class="question">PHONE NO (GCC)</div> <div class="answer">{{ object.phone_2_gcc }}</div>
+      {% endif %}
+      {% if object.get_blood_group_display %}
+      <div class="question">BLOOD GROUP</div> <div class="answer"> {{ object.get_blood_group_display}}</div>
+      {% endif %}
+      {% if object.country %}
+      <div class="question">CURRENT LOCATION</div> <div class="answer"> {{ object.place }},{{ object.city}}, {{ object.country }} <a style="color: darkgreen;" href="{{ object.current_location }}">On Map</a></div>
+      {% endif %}
+      {% if object.occupation_or_course %}
+      <div class="question">COURSE / JOB </div> <div class="answer">{{ object.occupation_or_course }}</div>
+      {% endif %}
+      {% if object.company_or_institution_name %}
+      <div class="question">INSTITUTE / COMPANY </div> <div class="answer">{{ object.company_or_institution_name }}, {{ object.company_or_institution_place }}</div>
+      {% endif %}
+    
+    </div>
+  </div>
+</div>
+
+{% endblock content%}
