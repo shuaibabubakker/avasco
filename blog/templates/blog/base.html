@@ -1,4 +1,4 @@
-{% load static %} 
+{% load static %}  {% load custom_tags %}
 <!DOCTYPE html>
 <html lang="en">
   
@@ -28,12 +28,18 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
   />
+   <!-- iconic -->
+  <link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+
+
   <link
     rel="stylesheet"
     type="text/css"
     href="{% static 'blog/main.css' %}"
   />
   <title>Avasco</title>
+
+  <link rel="shortcut icon" href="{% static 'favicon.png' %}" />
 </head>
 
 <body>
@@ -48,7 +54,9 @@
 
    <div class="container">
         <!-- <img src="{% static 'avas.png' %}" class="brand" alt="no image" /> -->
-        <div class="title">avasco</div>
+        <a href="{% url 'blog-home'%}">
+          <div class="title" style="color: #121c58;">avasco</div>
+        </a>
         <a
           class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3"
           data-toggle="collapse"
@@ -58,8 +66,8 @@
           aria-label="Toggle  navigation"
         >
           <svg
-            width="2em"
-            height="2em"
+            width="3em"
+            height="3em"
             viewBox="0 0 16 16"
             class="bi bi-justify-right"
             fill="#002266"
@@ -79,6 +87,15 @@
             <a class="nav-item nav-link" href="{% url 'blog-about' %} "
               >About</a
             >
+            <a class="nav-item nav-link" href="{% url 'posts' %}"
+              >Events</a
+            >
+            <a class="nav-item nav-link" href="{% url 'gallery' %}"
+              >Gallery</a
+            >
+            <a class="nav-item nav-link" href="{% url 'members' %}"
+              >Committee</a
+            >
           </div>
         </div>
       </div>
@@ -92,7 +109,7 @@
 
 
   
-<footer style="padding: 30px 5px; background-color:#e9e9e9;">
+<footer style="padding: 30px 5px; background-color:#e9e9e9; line-height:2em;">
   <div class="container"  >
     <div class="row justify-content-center footer-text">
       <div class="col-md-4">
@@ -100,9 +117,15 @@
         <br />
         Avasco Aviyoor, near Aviyoor School
         <br />
-        Edakkara, Chavakkad, Thrissur
-        <br />
-        Phone: +91 999999999 
+        Edakkara, Chavakkad, Thrissur 
+        <br>
+
+        <a href="https://maps.app.goo.gl/aSoSHUyyFsuMZMsB6" style="color: rgb(70, 69, 69);"><ion-icon name="location-outline"></ion-icon> See on Map</a>   
+
+
+        <br /> <br /> 
+        Phone: <a href="tel:{% president %}"  style="color: rgb(70, 69, 69);">+{% president %} (President)  </a>
+        <br>  &emsp;&emsp;&emsp;&ensp; <a href="tel:{% secretary %}"  style="color: rgb(70, 69, 69);">+{% secretary %} (Secretary) </a>
         <br><br>
       </div>
 
@@ -113,7 +136,7 @@
         <br />
         <a class="footer-text" href="{% url 'blog-about' %}">About</a>
         <br />
-        <a class="footer-text" href="{% url 'posts' %}">Events & Titles</a>
+        <a class="footer-text" href="{% url 'posts' %}">Events</a>
         <br />
         <a class="footer-text" href="{% url 'gallery' %}">Gallery</a>
         <br />
@@ -121,7 +144,7 @@
         <br />
         <a class="footer-text" href="{% url 'members' %}">Committee & Members</a>
         <br />
-        <a class="footer-text" href="admin">Admin</a>
+        <a class="footer-text" href="{% url 'admin:index' %}">Admin Panel</a>
       </div>
     </div>
   </div>
@@ -130,7 +153,7 @@
  
   <div style="text-align: center;">
     <p class="social-icons">
-        <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+        <a class="facebook" href="https://www.facebook.com/groups/AVSCO.2016/?ref=share"><i class="fa fa-facebook"></i></a>
 
         <a
           class="instagram"
@@ -138,7 +161,14 @@
           ><i class="fa fa-instagram"></i
         ></a>
 
-        <a class="whatsapp" href="#"><i class="fa fa-whatsapp"></i></a>
+        <a
+          class="instagram"
+          href="mailto:avascoaviyoor@gmail.com"
+          >
+          <ion-icon name="mail" ></ion-icon>
+        </a>
+
+        <a class="whatsapp" href="http://wa.me/918606254212"><i class="fa fa-whatsapp"></i></a>
     </p>
   </div>
   <br>
@@ -178,5 +208,6 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI "
       crossorigin="anonymous "
     ></script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
   </body>
 </html>

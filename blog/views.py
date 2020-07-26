@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Member, Timeline, Committee, Homepic
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .filters import MemberFilter
+
+
 def home(request):
     homepics = Homepic.objects.all()
     count = Homepic.objects.count()
@@ -61,10 +64,30 @@ class MemberListView(ListView):
 
         return context
 
+def members(request):
+    members = Member.objects.all()
+    committee = Committee.objects.all().first()
+    context = {
+        'members': members,
+        'committee': committee,
+    }
+    return render(request, 'blog/members.html', context)
+
 
 class MemberDetailView(DetailView):
     model = Member
 
+
+def filter_members(request):
+    members = Member.objects.all()
+
+    myfilter = MemberFilter(request.GET, queryset=members)
+    members = myfilter.qs
+    context = {
+        'members': members,
+        'myfilter': myfilter
+    }
+    return render(request, 'blog/filter_members.html', context)
 
 class PostListView(ListView):
     model = Post
@@ -78,19 +101,19 @@ class PostDetailView(DetailView):
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
-    login_url='/admin/login/?next=/admin/'
+    login_url = '/admin/login/?next=/admin/'
     model = Post
     fields = '__all__'
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
-    login_url='/admin/login/?next=/admin/'
+    login_url = '/admin/login/?next=/admin/'
     model = Post
     fields = '__all__'
 
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
-    login_url='/admin/login/?next=/admin/'
+    login_url = '/admin/login/?next=/admin/'
     model = Post
     success_url = '/'
     # def test_func(self):

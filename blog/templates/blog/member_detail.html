@@ -7,6 +7,9 @@
       {% if object.get_section_display %}
       <p class="post-detail-date">{{ object.get_section_display }}</p>
       {% endif %}
+      {% if object.avasco_id %}
+      <div class="question">AVASCO ID</div> <div class="answer" style="text-transform: none !important;">{{ object.avasco_id }}</div>
+      {% endif %}
       {% if object.get_sex_display %}
         <div class="question">GENDER</div> <div class="answer">{{ object.get_sex_display }}</div>
       {% endif %}
@@ -23,7 +26,7 @@
       <div class="question">BLOOD GROUP</div> <div class="answer"> {{ object.get_blood_group_display}}</div>
       {% endif %}
       {% if object.country %}
-      <div class="question">CURRENT LOCATION</div> <div class="answer"> {{ object.place }},{{ object.city}}, {{ object.country }} <a style="color: darkgreen;" href="{{ object.current_location }}">On Map</a></div>
+      <div class="question">CURRENT LOCATION</div> <div class="answer"> {{ object.place }},{{ object.city}}, {{ object.country }} <a style="color: darkgreen; padding: 5px; text-decoration: underline !important;" href="{{ object.current_location }}">On Map</a></div>
       {% endif %}
       {% if object.occupation_or_course %}
       <div class="question">COURSE / JOB </div> <div class="answer">{{ object.occupation_or_course }}</div>

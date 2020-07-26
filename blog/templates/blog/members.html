@@ -479,16 +479,22 @@
       <br />
       <br />
       <div class="page-title">Members</div>
-
+      <div class="post-detail-date" style="padding:20px;">{{ members.count }} Members</div>
+      <div style="text-align: right; padding: 20px;">
+        <a class="editbtn" href="{% url 'filter-members' %}">
+          FILTER
+        </a>
+      </div>
       <div class="card-columns">
+     
         {% for member in members %}
         <div>
           <li class="media">
-            <img
-              class="media-object"
-              src="{{ member.image.url }}"
-              alt="no image"
-            />
+              <img
+                class="media-object"
+                src="{{ member.image.url }}"
+                alt="no image"
+              />
             <a href="{% url 'member-detail' member.id %}">
               <h4 class="media-heading">{{ member.name}}</h4>
             </a>

@@ -14,7 +14,8 @@ urlpatterns = [
     path('post/new/', PostCreateView.as_view(), name='post-create'),
 
     path('gallery/', views.gallery, name='gallery'),
-    path('members/', MemberListView.as_view(), name='members'),
+    path('members/', views.members, name='members'),
+    path('members/filter', views.filter_members, name='filter-members'),
     path('member/<int:pk>/', MemberDetailView.as_view(), name='member-detail'),
     path('timeline/',TimelineListView.as_view() , name='timeline'),
 ]

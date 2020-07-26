@@ -1,0 +1,40 @@
+{% extends "blog/base.html" %} {% load static %} {%block content%}
+<div>
+  <div>
+    <div class="page-title">Members</div>
+
+    <br />
+    <div class="row">
+      <div class="col">
+        <div class="card card-body">
+          <form method="get">
+            {{ myfilter.form.as_p }}
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="post-detail-date" style="padding: 20px;">
+      {{ members.count }} Members
+    </div>
+    <div class="card-columns">
+      {% for member in members %}
+      <div>
+        <li class="media">
+          <img
+            class="media-object"
+            src="{{ member.image.url }}"
+            alt="no image"
+          />
+          <a href="{% url 'member-detail' member.id %}">
+            <h4 class="media-heading">{{ member.name}}</h4>
+          </a>
+        </li>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content%}

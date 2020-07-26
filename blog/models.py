@@ -1,12 +1,16 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
 
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
-    image_1 = models.ImageField(upload_to='post_pics/', default='avasco_logo.jpeg', blank=True, null=True)
+    image_1 = models.ImageField(upload_to='post_pics/', default='avasco.jpeg', blank=True, null=True)
     image_2 = models.ImageField(upload_to='post_pics/', blank=True, null=True)
     image_3 = models.ImageField(upload_to='post_pics/', blank=True, null=True)
     file_1 = models.FileField(upload_to='post_files/', blank=True, null=True)
@@ -20,15 +24,44 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
 
+    def save(self, *args, **kwargs):
+        if self.image_1 and self.image_1.size > 100000:
+            self.image_1 = self.compressImage(self.image_1)
+        if self.image_2 and self.image_2.size > 100000:
+            self.image_2 = self.compressImage(self.image_2)
+        if self.image_3 and self.image_3.size > 100000:
+            self.image_3 = self.compressImage(self.image_3)
+        super(Post, self).save(*args, **kwargs)
+        
+    
+    def compressImage(self,uploadedImage):
+        imageTemproary = Image.open(uploadedImage)
+        outputIoStream = BytesIO()
+        imageTemproary = imageTemproary.resize( (300,250) ) 
+        imageTemproary.save(outputIoStream , format='JPEG', quality=100)
+        outputIoStream.seek(0)
+        uploadedImage = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        return uploadedImage        
+
 
 class Timeline(models.Model):
     title = models.CharField(max_length=100)
     year = models.IntegerField(default=2020)
-    image = models.ImageField(upload_to = 'timeline_pics/', default='avasco_logo.jpeg')
+    image = models.ImageField(upload_to = 'timeline_pics/', default='avasco.jpeg')
     content = models.TextField()
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.image.size > 100000:
+            im = Image.open(self.image)
+            output = BytesIO()
+            im = im.resize( (400,300) )
+            im.save(output, format='JPEG', quality=100)
+            output.seek(0)
+            self.image = InMemoryUploadedFile(output,'ImageField', "%s.jpg" %self.image.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+        super(Timeline, self).save(*args, **kwargs)
    
 
 class Member(models.Model):
@@ -41,7 +74,8 @@ class Member(models.Model):
     SEX = ((1,"Male"), (2,"Female"), (3,"Others") )
 
     name = models.CharField(max_length=40)
-    image = models.ImageField(upload_to='member_pics/', default='account_default.jpg')
+    image = models.ImageField(upload_to='member_pics/', default='accountdefault.jpg')
+    avasco_id =  models.CharField("Avasco ID (if exists)", max_length=10,null=True, blank=True) 
     blood_group = models.IntegerField( 
         choices = BLOOD_GROUP,
         default = 9,null= True
@@ -68,12 +102,40 @@ class Member(models.Model):
     def __str__(self):
         return self.name
 
+    
+    def save(self, *args, **kwargs):
+        if self.image and self.image.size > 100000:
+            self.image = self.compressImage(self.image)
+        super(Member, self).save(*args, **kwargs)
+        
+    
+    def compressImage(self,uploadedImage):
+        imageTemproary = Image.open(uploadedImage)
+        outputIoStream = BytesIO()
+        imageTemproary = imageTemproary.resize( (270,270) ) 
+        imageTemproary.save(outputIoStream , format='JPEG', quality=100)
+        outputIoStream.seek(0)
+        uploadedImage = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        return uploadedImage    
+
+        
+
 class Homepic(models.Model):
     image = models.ImageField(upload_to='home_pics/')
     title = models.CharField(max_length=20)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.image and self.image.size > 100000:
+            im = Image.open(self.image)
+            output = BytesIO()
+            im = im.resize( (400,300) )
+            im.save(output, format='JPEG', quality=100)
+            output.seek(0)
+            self.image = InMemoryUploadedFile(output,'ImageField', "%s.jpg" %self.image.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+        super(Homepic, self).save(*args, **kwargs)
 
 
 class Committee(models.Model):
@@ -108,4 +170,22 @@ class Committee(models.Model):
     
     def __str__(self):
         return "Committee"
+
+    def save(self, *args, **kwargs):
+        if self.india_poster and self.india_poster.size > 100000:
+            self.india_poster = self.compressImage(self.india_poster)
+        if self.gcc_poster and self.gcc_poster.size > 100000:
+            self.gcc_poster = self.compressImage(self.gcc_poster)
+        super(Committee, self).save(*args, **kwargs)
+        
+    
+    def compressImage(self,uploadedImage):
+        imageTemproary = Image.open(uploadedImage)
+        outputIoStream = BytesIO()
+        imageTemproary = imageTemproary.resize( (300,600) ) 
+        imageTemproary.save(outputIoStream , format='JPEG', quality=100)
+        outputIoStream.seek(0)
+        uploadedImage = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+        return uploadedImage        
+ 
    

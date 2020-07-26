@@ -3,23 +3,6 @@
   <legend class="page-title col-md-8" style="padding: 0px 80px;">Timeline</legend>
 </div>
 
-<!-- TIMELINE -->
-<!-- 
-<div class="card-columns">
-  {% for timeline in timelines %}
-  <div class="card">
-    <img
-      class="card-img-top"
-      src="{% static 'cam.jpg' %}"
-      alt="Card image cap"
-    />
-    <a href="#">
-      <h5 class="card-title">{{ timeline.year }}</h5>
-    </a>
-  </div>
-  {% endfor %}
-</div> -->
-
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -30,8 +13,8 @@
             <span class="timeline-year">{{ timeline.year }}</span>
             <img
               class="card-img-top"
-              style="max-height: 20vmax; height: 20%;"
-              src="{% static 'cam.jpg' %}"
+              style="max-height: 30vmax; height: 30%;"
+              src="{{ timeline.image.url }}"
               alt="Card image cap"
             />
             <div style="padding: 20px;">
@@ -133,23 +116,29 @@
     right: 30px;
     left: auto;
   }
+  .main-timeline .timeline:nth-child(4n + 1) .timeline-content {
+    background: linear-gradient(to right, #1f308f, #071042);
+  }
+  .main-timeline .timeline:nth-child(4n + 1) .timeline-year {
+    color: #2b3944;
+  }
   .main-timeline .timeline:nth-child(4n + 2) .timeline-content {
-    background: linear-gradient(to right, #32612a, #1e472c);
+    background: linear-gradient(to right, #257a16, #074e1f);
   }
   .main-timeline .timeline:nth-child(4n + 2) .timeline-year {
     color: #3f583a;
   }
   .main-timeline .timeline:nth-child(4n + 3) .timeline-content {
-    background: linear-gradient(to right, #812828, #880d0d);
+    background: linear-gradient(to right, #992121, #700f0f);
   }
   .main-timeline .timeline:nth-child(4n + 3) .timeline-year {
     color:  #662525;
   }
   .main-timeline .timeline:nth-child(4n + 4) .timeline-content {
-    background: linear-gradient(to right, #405772, #210e64);
+    background: linear-gradient(to right, #672570, #360542);
   }
   .main-timeline .timeline:nth-child(4n + 4) .timeline-year {
-    color: #2b3944;
+    color: #5c0e51;
   }
   @media screen and (max-width: 767px) {
     .main-timeline .timeline {
